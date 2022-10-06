@@ -46,7 +46,7 @@ class BreedsCreate(CreateView):
     fields = ['breed', 'image', 'details']
     template_name = 'breeds_create.html'
     def get_success_url(self):
-        return reverse('create-breed', kwargs={'pk': self.object.pk})
+        return reverse('breed_detail', kwargs={'pk': self.object.pk})
 
 
 class BreedDetails(DetailView):
