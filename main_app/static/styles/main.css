@@ -10,3 +10,8 @@
   .title {
     font-size: 40px;
   }
+
+  .breed-image {
+    height: 200px;
+    width: auto;
+  }
