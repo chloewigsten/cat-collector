@@ -58,7 +58,7 @@ class BreedUpdate(UpdateView):
     fields = ['breed', 'image', 'details']
     template_name = 'breed_update.html'
     def get_success_url(self): 
-        return reverse('breed detail', kwargs={'pk': self.object.pk})
+        return reverse('breed_detail', kwargs={'pk': self.object.pk})
 
 class BreedDelete(DeleteView):
     model = Breed
