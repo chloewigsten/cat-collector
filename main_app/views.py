@@ -28,17 +28,17 @@ class Cat:
         self.details = details 
 
 class CatBreedList(TemplateView):
-    template_name='cat-breeds.html'
+    template_name = "cat-breeds.html"
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        search = self.request.GET.get('search')
-        if search != None: 
-            context['breeds'] = Breed.objects.filter(search_icontains=search)
-            context['header'] = f"Searching for {search}"
-        else: 
+        context = super().get_context_data(**kwargs)      
+        searchBreeds = self.request.GET.get("breeds")
+        # If a query exists we will filter by name 
+        if searchBreeds != None:
+            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+            context["breeds"] = Breed.objects.filter(searchBreeds__icontains=searchBreeds)
+        else:
             context["breeds"] = Breed.objects.all()
-            context['header'] = "Most Popular Breeds"
         return context
 
 class BreedsCreate(CreateView):
