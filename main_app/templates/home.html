@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="home_characteristics">
+    {% for personalities in personality %}
+    <div class="personality mb-3">
+        <h3 class="personality-title">{{personalities.traits}}</h3>
+        <hr />
+
+        {% for characteristic in breed.characteristics.all %}
+            <div class="characteristics">
+                <span>{{characteristic.traits}}</span>
+                <span>{{characteristic.temperament}}</span>
+                <span>
+                    <a href="{% url 'personality_characteristics' personality.pk characteristic.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                </span>
+            </div>
+
+        {% endfor %}
+    </div>
+    {% empty %}
+    <div class="personality mb-3">There are no personality traits associated with this breed.</div>
+    {% endfor %}
+</div>
+{% endblock %}

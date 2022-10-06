@@ -1,0 +1,154 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<!--  Breed photo -->
+<div class="'detail_img">
+    <img src="{{breed.image}}" alt="{{breed.name}}" />
+</div>
+
+<!-- Breed Title  -->
+<div class="'detail_breed">
+    <h1 class="'title">{{breed.breed}}</h1>
+</div>
+
+<!-- Breed Details Section -->
+<div class="detail__container">
+    <div class="buttons">
+        <a href="" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+        <a href="" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">About</h4>
+        <p>{{breed.details}}</p>
+    </div>
+<!--  Color Show Section  -->
+    <div class="detail__color mb-5">
+        <h3 class="title is-3">Color</h3>
+
+        {% for color in breed.colors.all %}
+            <div class="color">
+                <span><b>{{color.coat}}</b></span>
+                <span>{{color.pattern}}</span>
+            </div>
+        {% empty %}
+            <article class="message">
+                <div class="message-header">
+                    <p>No Color Available</p>
+                </div>
+            </article>
+
+        {% endfor %}
+    </div>
+<!--  Beginning of add new color section  -->
+<form class="mb-5" action="{% url 'color_create' breed.pk %}" method="post">
+    {% csrf_token %}
+    <div class="field has-addons">
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="color"
+                placeholder="Color"
+                required
+            />
+        </div>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="pattern"
+                placeholder="Pattern"
+                required
+            />
+        </div>
+        <div class="control">
+            <input class="button is-primary" type="submit" value="Add Color" />
+        </div>
+    </div>
+</form>
+<!--  End of add color section  -->
+
+<!--  Beginning of characteristics section  -->
+<div class="detail__personality mb-5">
+    <h3 class="title">Personality Traits</h3>
+
+    {% for characteristic in breed.characteristics.all %}
+        <div class="characteristic">
+            <span><b>{{characteristic.traits}}</b></span>
+            <span>{{characteristic.temperament}}</span>
+        </div>
+    {% empty %}
+        <article class="message">
+            <div class="message-header">
+                <p>No Personality Traits Available</p>
+            </div>
+        </article>
+
+    {% endfor %}
+</div>
+<!--  End of characteristics section  -->
+
+<!--  Beginning of add personality  -->
+<form class="mb-5" action="{% url 'characteristic_create' breed.pk %}" method="post">
+    {% csrf_token %}
+    <div class="field has-addons">
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="traits"
+                placeholder="Personality Traits"
+                required
+            />
+        </div>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="temperament"
+                placeholder="Temperament"
+                required
+            />
+        </div>
+        <div class="control">
+            <input class="button is-primary" type="submit" value="Add Characteristics" />
+        </div>
+    </div>
+</form>
+
+<!--  End of add personality section  -->
+
+<!--  Update breed button  -->
+    <div class="detail__container">
+        <div class="buttons">
+            <div class="buttons">
+        <a href="{% url 'breed-update' breed.pk %}" class="button is-info"> Update
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+
+<!--  Delete breed button  -->
+        <a href="/cat-breeds/{{breed.id}}/delete" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+        <a href="" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+    </div>
+</div>
+</div>
+
+{% endblock %}
