@@ -26,7 +26,7 @@
     {% for breed in breeds %}
     <a href="{% url 'breed_detail' breed.pk %}">
         <div class="card">
-            <div class="'breed-image">
+            <div class="breed-image">
                 <img class="breed-image" src="{{breed.image}}" alt="{{breed.name}}" />
             </div>
             <div class="breed-header">
