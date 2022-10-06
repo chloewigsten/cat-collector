@@ -24,16 +24,18 @@
   <a class="button is-dark" href="{% url 'breed-create' %}">Add A Breed</a>
 <div class="gallery">
     {% for breed in breeds %}
-    <a href="{% url 'breed_detail' breed.pk %}">
+    <div class="gallery">
+      <a href="{% url 'breed_detail' breed.pk %}">
         <div class="card">
-            <div class="breed-image">
-                <img class="breed-image" src="{{breed.image}}" alt="{{breed.name}}" />
-            </div>
-            <div class="breed-header">
-                <p class = 'breed-header-title'>{{breed.name}}</p>
-            </div>
+              <div class="breed-image">
+                  <img class="breed-image" src="{{breed.image}}" alt="{{breed.name}}" />
+              </div>
+              <div class="breed-header">
+                  <p class = 'breed-header-title'>{{breed.name}}</p>
+              </div>
         </div>
-    </a>
+      </a>
+    </div>
 </div>
 {% endfor %}
 
