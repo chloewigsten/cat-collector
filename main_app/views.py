@@ -34,7 +34,7 @@ class CatBreedList(TemplateView):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get('search')
         if search != None: 
-            context['breeds'] = Breed.objects.filter(breed_icontains=search)
+            context['breeds'] = Breed.objects.filter(search_icontains=search)
             context['header'] = f"Searching for {search}"
         else: 
             context["breeds"] = Breed.objects.all()
