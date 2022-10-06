@@ -32,11 +32,11 @@ class CatBreedList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)      
-        searchBreeds = self.request.GET.get("breeds")
+        name = self.request.GET.get("name")
         # If a query exists we will filter by name 
-        if searchBreeds != None:
+        if name != None:
             # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
-            context["breeds"] = Breed.objects.filter(searchBreeds__icontains=searchBreeds)
+            context["breeds"] = Breed.objects.filter(name__icontains=name)
         else:
             context["breeds"] = Breed.objects.all()
         return context
