@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="home_characteristics">
-    {% for personalities in personality %}
+    {% for personality in personality %}
     <div class="personality mb-3">
-        <h3 class="personality-title">{{personalities.traits}}</h3>
+        <h3 class="personality-title">{{personality.traits}}</h3>
         <hr />
 
         {% for characteristic in breed.characteristics.all %}
