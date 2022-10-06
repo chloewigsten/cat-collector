@@ -18,3 +18,8 @@
     height: 200px;
     width: auto;
   }
+
+  .gallery {
+    width: 400px;
+    height: 400px;
+  }
