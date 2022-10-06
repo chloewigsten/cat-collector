@@ -4,18 +4,23 @@
 {% block content %} 
 
 <h1 class="title pt-5">{{header}}</h1>
+
+<!--  Start of Search -->
+
 <form class="mb-5" method="get">
     <div class="field has-addons">
       <div class="control">
-        <input class="input" type="text" name="name" placeholder="name" />
+        <input class="input" type="text" breed="breed" placeholder="Search Breeds" />
       </div>
       <div class="control">
         <input class="button is-success" type="submit" value="Search" />
       </div>
     </div>
-    <!--  This anchor tag will redirect back to artist list without a query param -->
     <a class="button is-dark" href="{% url 'cat-breeds' %}">Clear Search</a>
   </form>
+
+  <!--  End of Search -->
+
   <a class="'button is-dark" href="{% url 'breed-create' %}">Add A Breed</a>
 <div class="'gallery">
     {% for breed in breeds %}
